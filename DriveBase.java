@@ -92,42 +92,6 @@ public class DriveBase {
 */	
 	}
 	public static void autoPerio() {
-		switch(situation) {	
-			case 0:
-				if(showOK == "case1 OK") {
-					situation = 2;
-					System.out.print(showOK);
-					break;
-				}
-				else if (showOK == "case2 OK") {
-					situation = 3;
-					System.out.print(showOK);
-					break;	
-				}
-			case 1:
-				if (currentTimer < 2) {
-                    m_Robot.tankDrive(0.5- m_gyro.getAngle()*0.03, 0.5+m_gyro.getAngle()*0.03);
-                    
-				}
-				else {
-					situation = 0;
-					showOK = "case1 OK";	
-				}
-				break;
-			case 2:
-				if(currentTimer >2.2 &&currentTimer < 3){
-					m_Robot.tankDrive(0, 0);
-				}
-				else {
-					situation = 0;
-					showOK = "case2 OK";
-				}
-				break;
-			case 3:
-				if(currentTimer >3 && currentTimer <5) {
-					
-				}
-		}
 		
 	}
 }
