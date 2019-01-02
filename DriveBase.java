@@ -56,13 +56,13 @@ public class DriveBase {
 		SmartDashboard.putNumber("m_rightSpeed ",0);
 		SmartDashboard.putNumber("m_shooterSpeed",0);
 	}
-	public static void AutoInit() {
-		m_gyro.reset();
-		m_timer.start();
-		currentTimer = m_timer.get();
-		SmartDashboard.putNumber("currentTime", 0);
-		SmartDashboard.putNumber("GyroAngle", 0);
-	}
+// 	public static void AutoInit() {
+// 		m_gyro.reset();
+// 		m_timer.start();
+// 		currentTimer = m_timer.get();
+// 		SmartDashboard.putNumber("currentTime", 0);
+// 		SmartDashboard.putNumber("GyroAngle", 0);
+// 	}
 	public static void tankDrive(){
 		if(joystick.getRawButton(9)&&joystick.getRawButton(10)) {
 //			myRobot.tankDrive(Joystick.getY(Hand.kLeft)/2, Joystick.getY(Hand.kRight));
@@ -91,7 +91,7 @@ public class DriveBase {
 		SmartDashboard.putNumber("m_shooterSpeed", ((WPI_VictorSPX) m_shooter).get());
 */	
 	}
-	public static void autoPerio() {
+// 	public static void autoPerio() {
 		
-	}
+// 	}
 }
