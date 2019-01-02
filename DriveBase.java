@@ -16,12 +16,12 @@ public class DriveBase {
 
 	private static ADXRS450_Gyro m_gyro;
 	private static Timer m_timer;
-	private static final byte m_stick = 0;
+	private static final byte p_stick = 0;
 	
-	private static final byte L_frontMotor = 0; 
-	private static final byte L_rearMotor = 1;
-	private static final byte R_frontMotor =  2;
-	private static final byte R_rearMotor = 3;
+	private static final byte p_frontMotor = 0; 
+	private static final byte p_rearMotor = 1;
+	private static final byte p_frontMotor =  2;
+	private static final byte p_rearMotor = 3;
 
 //put more else motors controller here 	
 //private static final byte m_sth = 4...;
@@ -46,58 +46,58 @@ public class DriveBase {
 		R_frontMotor = new WPI_VictorSPX(p_rightMotor);
 		L_frontMotor = new WPI_VictorSPX(p_leftMotor);
 		
-		m_stick = new XboxController(p_joystick);
+		m_stick = new XboxController(p_);
 		m_gyro= new ADXRS450_Gyro();
 		m_timer = new Timer();
 		m_Robot = new DifferentialDrive(L_frontMotor, R_frontMotor);
+// motor safety	and situation
+		L_rearMotor.set(ControlMode.follower, );
+		R_rearMotor.set(ControlMode.follower, );
 		
-		m_leftMotor.setInverted(false);
-		m_rightMotor.setInverted(false);
-		m_shooter.setInverted(false);
-        m_leftMotor.setNeutralMode(NeutralMode.Brake);
-        m_rightMotor.setNeutralMode(NeutralMode.Brake);
-        m_shooter.setNeutralMode(NeutralMode.Brake);
-
-		SmartDashboard.putNumber("m_leftSpeed ",0);
-		SmartDashboard.putNumber("m_rightSpeed ",0);
-		SmartDashboard.putNumber("m_shooterSpeed",0);
+		L_frontMotor.setInverted(false);
+		L_rearMotor.setInverted(false);
+		R_frontMotor.setInverted(false);
+		R_rearMotor.setInverted(false);
+		
+        	L_frontMotor.setNeutralMode(NeutralMode.Brake);
+        	L_rearMotor.setNeutralMode(NeutralMode.Brake);
+        	R_frontMotor.setNeutralMode(NeutralMode.Brake);
+		R_rearMotor.setsetNeutralMode(NeutralMode.Brake);
+// a new .java 
+// 		SmartDashboard.putNumber("m_leftSpeed ",0);
+// 		SmartDashboard.putNumber("m_rightSpeed ",0);
+// 		SmartDashboard.putNumber("m_shooterSpeed",0);
 	}
-// 	public static void AutoInit() {
-// 		m_gyro.reset();
-// 		m_timer.start();
-// 		currentTimer = m_timer.get();
-// 		SmartDashboard.putNumber("currentTime", 0);
-// 		SmartDashboard.putNumber("GyroAngle", 0);
-// 	}
-	public static void tankDrive(){
-		if(joystick.getRawButton(9)&&joystick.getRawButton(10)) {
-//			myRobot.tankDrive(Joystick.getY(Hand.kLeft)/2, Joystick.getY(Hand.kRight));
-			System.out.print("aBC");
-		}
-		else{
-//			myRobot.tankDrive(Joystick.getY(Hand.kLeft)*-0.7,Joystick.getY(Hand.kRight)*-0.7);
-			System.out.print("cab");
-		}
-		if(joystick.getBumper(Hand.kLeft)) {  				
-				m_shooter.set(ControlMode.PercentOutput, -0.8);
-			}
-		
-		else if(joystick.getBumper(Hand.kRight)) {
-				m_shooter.set(ControlMode.PercentOutput, 0.5);
-			}
-		/*else if(Joystick.getYButton()){
-			m_shooter.set(ControlMode.PercentOutput, 0.5);
-		}*/
-		else {
-			m_shooter.set(ControlMode.PercentOutput, 0);
-		}
 
-/*		SmartDashboard.putNumber("m_leftSpeed ",((WPI_VictorSPX)m_leftMotor).get());
+	public static void tankDrive(){
+		myRobot.tankDrive(stick.getY(Hand.kLeft), Joystick.getY(Hand.kRight));
+	}
+//	Trigger&Bumper
+//		if(stick.getBumper(Hand.kRight)) {
+// 			put something here
+// 		}
+// 		else {
+// 		}
+// 		
+//		if(stick.getTrigger(Hand.kLeft > 0.5)){
+// 		}
+
+
+/*	Dashboard.java 
+		SmartDashboard.putNumber("m_leftSpeed ",((WPI_VictorSPX)m_leftMotor).get());
 		SmartDashboard.putNumber("m_rightSpeed ",((WPI_VictorSPX) m_rightMotor).get());
 		SmartDashboard.putNumber("m_shooterSpeed", ((WPI_VictorSPX) m_shooter).get());
 */	
-	}
-// 	public static void autoPerio() {
+	
+// 	auto.java	
+// 		public static void AutoInit() {
+// 			m_gyro.reset();
+// 			m_timer.start();
+// 			currentTimer = m_timer.get();
+// 			SmartDashboard.putNumber("currentTime", 0);
+// 			SmartDashboard.putNumber("GyroAngle", 0);
+// 		}	
+// 		public static void autoPerio() {
 		
-// 	}
+// 		}
 }
