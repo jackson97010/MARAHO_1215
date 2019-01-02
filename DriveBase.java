@@ -14,27 +14,22 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveBase {
 
-	private static ADXRS450_Gyro m_gyro;
-	private static Timer m_timer;
 	private static final byte p_stick = 0;
-	
-	private static final byte p_frontMotor = 0; 
-	private static final byte p_rearMotor = 1;
-	private static final byte p_frontMotor =  2;
-	private static final byte p_rearMotor = 3;
+	private static final byte p_LfrontMotor = 0; 
+	private static final byte p_LrearMotor = 1;
+	private static final byte p_RfrontMotor =  2;
+	private static final byte p_RrearMotor = 3;
 
 //put more else motors controller here 	
 //private static final byte m_sth = 4...;
 	
 	private static DifferentialDrive m_Robot;
-	@SuppressWarnings("unused")
-	private static XboxController joystick;
+	private static XboxController m_stick;
 	private static WPI_VictorSPX L_frontMotor, R_frontMotor;
 	private static VictorSPX L_rearMotor, R_rearMotor;
 // more motor controller	
 //current time
 //private static VictorSPX m_sth....;
-	private static double c_time ;
 
 	
 	@SuppressWarnings("unused")
@@ -43,16 +38,18 @@ public class DriveBase {
 	
 	public static void init(){
 		
-		R_frontMotor = new WPI_VictorSPX(p_rightMotor);
-		L_frontMotor = new WPI_VictorSPX(p_leftMotor);
+		R_frontMotor = new WPI_VictorSPX(p_LfrotnMotor);
+		R_rearMotor = new VictorSPX(p_RrearMotor);
+		L_frontMotor = new WPI_VictorSPX(p_LfrontMotor);
+		L_rearMotor = new VictorSPX(p_LrearMotor);
 		
-		m_stick = new XboxController(p_);
-		m_gyro= new ADXRS450_Gyro();
+		m_stick = new XboxController(p_stick);
+		
 		m_timer = new Timer();
 		m_Robot = new DifferentialDrive(L_frontMotor, R_frontMotor);
 // motor safety	and situation
-		L_rearMotor.set(ControlMode.follower, );
-		R_rearMotor.set(ControlMode.follower, );
+		L_rearMotor.set(ControlMode.follower, p_LfrontMotor);
+		R_rearMotor.set(ControlMode.follower, p_RfrontMotor);
 		
 		L_frontMotor.setInverted(false);
 		L_rearMotor.setInverted(false);
@@ -63,10 +60,7 @@ public class DriveBase {
         	L_rearMotor.setNeutralMode(NeutralMode.Brake);
         	R_frontMotor.setNeutralMode(NeutralMode.Brake);
 		R_rearMotor.setsetNeutralMode(NeutralMode.Brake);
-// a new .java 
-// 		SmartDashboard.putNumber("m_leftSpeed ",0);
-// 		SmartDashboard.putNumber("m_rightSpeed ",0);
-// 		SmartDashboard.putNumber("m_shooterSpeed",0);
+
 	}
 
 	public static void tankDrive(){
@@ -83,21 +77,4 @@ public class DriveBase {
 // 		}
 
 
-/*	Dashboard.java 
-		SmartDashboard.putNumber("m_leftSpeed ",((WPI_VictorSPX)m_leftMotor).get());
-		SmartDashboard.putNumber("m_rightSpeed ",((WPI_VictorSPX) m_rightMotor).get());
-		SmartDashboard.putNumber("m_shooterSpeed", ((WPI_VictorSPX) m_shooter).get());
-*/	
-	
-// 	auto.java	
-// 		public static void AutoInit() {
-// 			m_gyro.reset();
-// 			m_timer.start();
-// 			currentTimer = m_timer.get();
-// 			SmartDashboard.putNumber("currentTime", 0);
-// 			SmartDashboard.putNumber("GyroAngle", 0);
-// 		}	
-// 		public static void autoPerio() {
-		
-// 		}
 }
