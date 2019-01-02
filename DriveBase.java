@@ -16,34 +16,40 @@ public class DriveBase {
 
 	private static ADXRS450_Gyro m_gyro;
 	private static Timer m_timer;
-	private static int situation = 0;
-	private static String showOK; 
-	private static final int p_joystick = 0;
+	private static final byte m_stick = 0;
 	
-	private static final int p_rightMotor = 0; 
-	private static final int p_leftMotor =  1;
-	private static final int p_shooter =  2;
+	private static final byte L_frontMotor = 0; 
+	private static final byte L_rearMotor = 1;
+	private static final byte R_frontMotor =  2;
+	private static final byte R_rearMotor = 3;
+
+//put more else motors controller here 	
+//private static final byte m_sth = 4...;
 	
 	private static DifferentialDrive m_Robot;
 	@SuppressWarnings("unused")
 	private static XboxController joystick;
-	private static WPI_VictorSPX m_rightMotor, m_leftMotor;
-	private static VictorSPX m_shooter;
-	private static double currentTimer ;
+	private static WPI_VictorSPX L_frontMotor, R_frontMotor;
+	private static VictorSPX L_rearMotor, R_rearMotor;
+// more motor controller	
+//current time
+//private static VictorSPX m_sth....;
+	private static double c_time ;
 
 	
 	@SuppressWarnings("unused")
 
-
+// put every initialize code here
+	
 	public static void init(){
 		
-		m_rightMotor = new WPI_VictorSPX(p_rightMotor);
-		m_leftMotor = new WPI_VictorSPX(p_leftMotor);
-		m_shooter = new VictorSPX(p_shooter);
-		joystick = new XboxController(p_joystick);
+		R_frontMotor = new WPI_VictorSPX(p_rightMotor);
+		L_frontMotor = new WPI_VictorSPX(p_leftMotor);
+		
+		m_stick = new XboxController(p_joystick);
 		m_gyro= new ADXRS450_Gyro();
 		m_timer = new Timer();
-		m_Robot = new DifferentialDrive(m_rightMotor, m_leftMotor);
+		m_Robot = new DifferentialDrive(L_frontMotor, R_frontMotor);
 		
 		m_leftMotor.setInverted(false);
 		m_rightMotor.setInverted(false);
