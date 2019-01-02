@@ -19,3 +19,7 @@
 // 		public static void autoPerio() {
 		
 // 		}
+//to do list 
+	SmartDashboard
+	pathFinder
+	Automous set
