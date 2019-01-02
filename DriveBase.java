@@ -66,6 +66,10 @@ public class DriveBase {
 	public static void tankDrive(){
 		myRobot.tankDrive(stick.getY(Hand.kLeft), Joystick.getY(Hand.kRight));
 	}
+// 直接使用motor	
+	public static void DirectControl(doulbe left, double right){
+		myRobot.tankDrive(left, right);
+	}
 //	Trigger&Bumper
 //		if(stick.getBumper(Hand.kRight)) {
 // 			put something here
