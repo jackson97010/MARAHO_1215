@@ -11,8 +11,6 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 public class DriveBase {
 
-	
-
 	private static final byte p_stick = 0;
 	private static final byte p_LfrontMotor = 0; 
 	private static final byte p_LrearMotor = 1;
